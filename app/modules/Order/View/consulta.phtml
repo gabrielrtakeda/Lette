@@ -1,0 +1,21 @@
+<h3>Consulta Order</h3>
+<div id="data" class="white consulta-order" method="setOrder">
+		<?php if ($orders->NUM_ROW > 0) { ?>
+		<div class="header">
+				<div class="head width6">Material</div>
+				<div class="head width2">P/O</div>
+				<div class="head width2">Previsão</div>
+		</div>
+		<?php foreach ($orders->FETCH_OBJECT as $order) { ?>
+		<a class="left" href="#" mat="<?php echo utf8_encode($order->Material); ?>" po="<?php echo utf8_encode($order->PO); ?>">
+				<div class="width6 left"><?php echo utf8_encode($order->Material); ?></div>
+				<div class="width2 center"><?php echo utf8_encode($order->PO); ?></div>
+				<div class="width2 right"><?php echo date_format($order->Previsao, 'd/m/Y'); ?></div>
+		</a>
+		<?php } ?>
+		<?php } else { ?>
+		<div class="row-fluid">
+				<div class="no-data">Não foi encontrado nenhum produto com este Apelido.</div>
+		</div>
+		<?php } ?>
+</div>

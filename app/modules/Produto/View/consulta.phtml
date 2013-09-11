@@ -1,0 +1,47 @@
+<?php $produto = $this->session->get('produto_consultado'); ?>
+<?php $idFirma = $this->session->get('firma')['id']; ?>
+				<table id="vert" class="span8">
+						<colgroup>
+								<col width="20%">
+								<col width="80%">
+						</colgroup>
+						<tbody>
+										 <tr><td class="head left">Código</td><td class="left"><?php echo $produto->Codigo; ?> (<?php echo $produto->LE; ?>)</td>
+								</tr><tr><td class="head right">Composição 1</td><td><?php echo $this->isNull($produto->Comp1); ?></td>
+								</tr><tr><td class="head right">2</td><td><?php echo $this->isNull($produto->Comp2); ?></td>
+								</tr><tr><td class="head right">3</td><td><?php echo $this->isNull($produto->Comp3); ?></td>
+								</tr><tr><td class="head right">4</td><td><?php echo $this->isNull($produto->Comp4); ?></td>
+								</tr><tr><td class="head left">Quantidade Total</td><td>0.00 <?php echo $produto->Unidade; ?></td>
+								</tr><tr><td class="head left">Peso</td><td><?php echo $produto->Peso; ?></td>
+								</tr><tr><td class="head left">Largura</td><td><?php echo $produto->Larg; ?></td>
+								</tr><tr><td class="head left">&nbsp;</td><td>&nbsp;</td>
+								</tr><tr><td class="head left">Classe Fiscal</td><td><?php echo $produto->CF; ?> &#0187; <?php echo $produto->CFCodigo; ?></td>
+								</tr><tr><td class="head left">Custo Unitário</td><td><?php echo $produto->Custo; ?></td>
+								</tr><tr><td class="head left">Origem de País</td><td><?php echo $produto->Origem; ?></td>
+								</tr><tr><td class="head left">DI Nº</td><td><?php echo $produto->DI; ?></td>
+								</tr><tr><td class="head left">Processo Nº</td><td><?php echo $produto->Processo; ?></td>
+										</tr>
+						</tbody>
+				</table>
+				<!-- Tabela de Cor - Por: (Produto, Firma) -->
+				<?php $join  = $this->db->query("SELECT c.Qtde, c.Cor FROM dbo.Produto as p INNER JOIN dbo.ProCorFirma as c ON p.Codigo = c.Codigo AND c.IDFirma = {$idFirma} WHERE p.Codigo = '{$this->db->escape($produto->Codigo)}';"); ?>
+				<table id="table-right" class="data span4" style="width:33%;">
+						<colgroup>
+								<col width="50%" />
+								<col width="50%" />
+						</colgroup>
+						<thead>
+								<tr>
+										<td>Cor</td>
+										<td>Quantidade</td>
+								</tr>
+						</thead>
+						<tbody>
+								<?php foreach ($join->FETCH_OBJECT as $cor) { ?>
+								<tr>
+										<td class="left"><?php echo $cor->Cor; ?></td>
+										<td class="right"><?php echo $cor->Qtde .' '. $produto->Unidade; ?></td>
+								</tr>
+								<?php } ?>
+						</tbody>
+				</table>

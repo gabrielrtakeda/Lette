@@ -1,0 +1,115 @@
+<script type="text/javascript">var e = new EditaValoresPrepedido();</script>
+<h3>Cadastro de Pré-Pedido</h3>
+<div class="order width100">
+		<div class="complementar width7 left">
+				<div class="row">
+						<div class="box width2">
+								<div class="title">PedidoN</div>
+								<input type="text" name="order[PedidoN]" class="w2" disabled="disabled" />
+						</div>
+						<div class="box width4">
+								<div class="title">Nível de Crédito</div>
+								<div class="labels">
+										<?php foreach ($nivCred as $radio) { ?>
+										<label>
+												<input type="radio" name="nivel_credito" value="<?php echo $radio; ?>"<?php echo ($radio == 'A' ? ' checked="checked"' : ''); ?> />
+												<?php echo $radio; ?>
+										</label>
+										<?php } ?>
+								</div>
+						</div>
+						<div class="box width4">
+								<div class="title">Condição de Pagamento</div>
+								<select name="condicao_pagamento">
+										<?php foreach ($condsPag as $option) { ?>
+										<option value="<?php echo $option; ?>"><?php echo $option; ?></option>
+										<?php } ?>
+								</select>
+						</div>
+				</div>
+				<div class="row">
+						<div class="box width10">
+								<div class="title">Local de Entrega</div>
+								<input type="text" name="order[LocalEnt]" class="w10" value="<?php echo $prepedido['cliente']['endereco']; ?>" />
+						</div>
+				</div>
+				<div class="row">
+						<div class="box width10">
+								<div class="title">Observação de Pedido</div>
+								<input type="text" name="order[Obs]" class="w10" />
+						</div>
+				</div>
+				<div class="row last table-box">
+						<table class="data width10">
+								<thead>
+										<tr>
+												<?php foreach ($theads as $td) { ?>
+												<td><?php echo $td; ?></td>
+												<?php } ?>
+										</tr>
+								</thead>
+								<tbody>
+										<?php foreach ($presub->FETCH_OBJECT as $k => $sub) { ?>
+										<tr>
+												<td id="cor" 			width="20%" ><?php echo $sub->Cor; ?></td>
+												<td id="qtde" 		width="12%">
+														<div class="icon icon-edit"></div><span>0,00</span>
+														<input type="text" class="w2" name="presub[<?php echo str_replace(' ', '_', $sub->Cor); ?>]" />
+												</td>
+												<td id="un" 			width="12%">
+														<div class="icon icon-edit"></div><span>0,00</span>
+														<input type="text" class="w2" name="presub[<?php echo str_replace(' ', '_', $sub->Cor); ?>]" />
+												</td>
+												<td id="total"		width="12%">0,00</td>
+												<td id="saldo"		width="12%"><?php echo number_format($sub->Saldo, 2, ', ', '.'); ?></td>
+												<td id="estoque"	width="12%" class="last"><?php echo number_format($sub->Qtde, 2, ',', '.'); ?></td>
+										</tr>
+										<?php } ?>
+								</tbody>
+						</table>
+				</div>
+		</div>
+		<div class="complementar width3 right">
+				<div class="row">
+						<div class="box width10">
+								<div class="title">Cliente</div>
+								<?php echo $prepedido['cliente']['apelido']; ?>
+						</div>
+				</div>
+				<div class="row">
+						<div class="box width10">
+								<div class="title">Data do Pedido</div>
+								<?php echo date('d/m/Y'); ?>
+						</div>
+				</div>
+				<div class="row">
+						<div id="preco" class="box width4">
+								<div class="title">Preço</div>
+								<input type="text" name="order[Preco]" class="w2" />
+						</div>
+						<div id="totalFinal" class="box width6" style="width:55% !important;">
+								<div class="title">Total</div>
+								<span></span>
+						</div>
+				</div>
+				<div class="row row-calcular">
+						<button class="calcular width10"><div class="icon icon-calculator"></div>Calcular</button>
+				</div>
+				<div class="row">
+						<div class="box width10">
+								<div class="title">Material</div>
+								<?php echo $prepedido['order']['material'] ?>
+						</div>
+				</div>
+				<div class="row">
+						<div class="box width10">
+								<div class="title">PO</div>
+								<?php echo $prepedido['order']['po'] ?>
+						</div>
+				</div>
+				<div class="row row-calcular">
+						<button class="cancelar width5"><div class="icon icon-cancel"></div>Cancelar</button>
+						<button class="cadastrar width5"><div class="icon icon-accept"></div>OK</button>
+				</div>
+		</div>
+</div>

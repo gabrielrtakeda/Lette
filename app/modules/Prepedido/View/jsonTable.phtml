@@ -1,0 +1,38 @@
+<table class="data full" cellspacing="0" cellpadding="0">
+		<colgroup>
+				<col width="100" />
+				<col width="350" />
+				<col width="100" />
+				<col width="30" />
+				<col width="110" />
+				<col width="100" />
+				<col width="80" />
+				<col width="40" />
+				<col width="40" />
+				<col width="50" />
+		</colgroup>
+		<thead>
+				<tr>
+						<?php $thead = array( 'PedidoN', 'Cliente', 'Data', 'ST', 'Pagamento', 'NF Nº', 'PO', 'Joo', 'Suk', 'Com'); ?>
+						<?php foreach ($thead as $head) { ?>
+						<td><?php echo $head; ?></td>
+						<?php } ?>
+				</tr>
+		</thead>
+		<tbody>
+				<?php foreach ($prepedidos->FETCH_OBJECT as $k => $prepedido) { ?>
+				<tr id="<?php echo $prepedido->PedidoN; ?>" obs="<?php echo utf8_encode($prepedido->Obs); ?>" mat="<?php echo $prepedido->Material; ?>" po="<?php echo $prepedido->PO; ?>">
+						<td class="center"><?php echo $prepedido->PedidoN; ?></td>
+						<td class="left"><?php echo $prepedido->Cliente; ?></td>
+						<td class="center"><?php echo date_format($prepedido->Data, 'd/m/Y'); ?></td>
+						<td class="center"><?php echo $prepedido->ST; ?></td>
+						<td class="left"><?php echo $prepedido->Pagamento; ?></td>
+						<td class="left"><?php echo $prepedido->NFN; ?></td>
+						<td class="center"><?php echo $prepedido->PO; ?></td>
+						<td class="center"><?php echo $prepedido->Joo; ?></td>
+						<td class="center"><?php echo $prepedido->Suk; ?></td>
+						<td class="center">-</td>
+				</tr>
+				<?php } ?>
+		</tbody>
+</table>

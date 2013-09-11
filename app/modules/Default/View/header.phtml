@@ -1,0 +1,77 @@
+<body>
+<div class="hikari-box"></div>
+<div class="hikari-content">
+		<h3>Consultar Produto</h3>
+		<div id="data" class="white">
+				<div class="header">
+						<div class="head codigo">Código</div>
+				</div>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+				<a href="#" class="codigo"><div>_TESTE</div></a>
+		</div>
+</div>
+
+<div id="firma">
+		<div class="firma-box">
+				<?php $firmaHead = array('cnpj' => 'CNPJ', 'fantasia' => 'Nome Fantasia', 'razao' => 'Razão Social'); ?>
+				<div id="data" class="black">
+						<a class="header">
+								<?php foreach ($firmaHead as $k => $head) { ?>
+								<div class="<?php echo $k; ?> head"><?php echo $head; ?></div>
+								<?php } ?>
+						</a>
+				<?php foreach ($firmas->FETCH_OBJECT as $firma) { ?>
+						<a href="#" id="<?php echo $firma->IDFirma; ?>">
+								<div class="cnpj">			<?php echo $firma->CNPJ; ?>			</div>
+								<div class="fantasia">	<?php echo $firma->Fantasia; ?>	</div>
+								<div class="razao">			<?php echo $firma->Razao; ?>		</div>
+						</a>
+				<?php } ?>
+				</div>
+		</div>
+</div>
+<div id="header">
+		<div class="menu-bar">
+				<?php
+				$menu_items = array(
+						'prepedido'			=> array('text' => 'Pré-Pedido',			'href' => $this->url->redirect('prepedido', false)),
+						'pedido'				=> array('text' => 'Pedido',					'href' => '#'),
+						'cliente'				=> array('text' => 'Cliente',					'href' => $this->url->redirect('cliente', false)),
+						'produto'				=> array('text' => 'Produto',					'href' => $this->url->redirect('produto', false)),
+						'relatorio'			=> array('text' => 'Relatório',				'href' => '#'),
+						'representante'	=> array('text' => 'Artigos',					'href' => $this->url->redirect('artigos', false)),
+						'trocarsenha'		=> array('text' => 'Trocar Senha',		'href' => '#'),
+						'sair'					=> array('text' => 'Sair',						'href' => $this->url->redirect('default/login/logout', false)),
+				);
+				?>
+				<ul class="left">
+						<?php $i = 1; $j = 0; foreach ($menu_items as $key => $item) { ?>
+						
+						<?php $key		= (($this->_module['name'] == 'Default') && ($key == 'prepedido') ? 'default' : $key); ?>
+						<?php $active = (strtolower($this->_module['name']) == $key ? ' active' : ''); ?>
+						<a href="<?php echo $item['href']; ?>" class="l<?php echo $i; ?> k<?php echo $j; ?><?php echo $active; ?>"><div class="text"><?php echo $item['text']; ?></div><?php echo $item['text']; ?></a>
+						<?php if ($i == 3) $i = 1; else $i++; $j++; } ?>
+				</ul>
+		</div>
+		<a href="<?php echo $this->url->redirect('', false); ?>" class="logo"></a>
+</div>
+
+<div id="container">

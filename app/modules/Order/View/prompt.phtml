@@ -1,0 +1,37 @@
+<div class="order-prompt">
+		<h3>Consulta Order</h3>
+		<div class="loading"></div>
+		<form id="consulta-order" method="post" style="margin:0;">
+				<div id="data" class="white">
+						<div class="header">
+								<div class="head width10">
+										<label><input type="radio" name="consulta_opcao" value="Material" />Material</label>
+										<label><input type="radio" name="consulta_opcao" value="PO" checked="checked" />P/O</label>
+								</div>
+						</div>
+				</div>
+				<input type="text" name="consulta_order" />
+		</form>
+
+		<script type="text/javascript">
+		jQuery(function() {
+				$('#consulta-order').submit(function(e) {
+						e.preventDefault();
+						var order = {
+								campo: $(this).find('input[name="consulta_opcao"]:checked').val(),
+								valor: $(this).find('input[name="consulta_order"]').val()
+						}
+						var self = $(this);
+						$.ajax({
+								url					: BASE_URL + 'order/json/consultaOrder',
+								type				: 'post',
+								data				: { order:order },
+								dataType		: 'html',
+								success			: function(html) { hikari.setContent(html); },
+								complete		: function() { loading(0); },
+								error				: function(x, op, e) { ajaxException(x, op, e); }
+						});
+				});
+		});
+		</script>
+</div>

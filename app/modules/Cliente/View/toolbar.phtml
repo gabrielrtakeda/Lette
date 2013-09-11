@@ -1,0 +1,15 @@
+<div id="toolbar" class="cliente break">
+		<div class="left">
+				<form id="consulta-cliente" method="post">
+						<div class="toolbox consultar first input-box">
+								<div class="title">Consultar</div>
+								<input type="text" name="consulta_cliente" class="tip" title="Insira o Apelido para consulta" value="<?php echo ($this->session->has('cliente_consultado') ? $this->session->get('cliente_consultado')->Apelido : '') ?>" />
+						</div>
+						<div class="toolbox-send">
+								<input type="submit" class="tip" title="Consultar" value="" />
+						</div>
+				</form>
+		</div>
+		<div class="right">
+		</div>
+</div>

@@ -1,0 +1,15 @@
+<h3>Consultar Produto</h3>
+<div id="data" class="white produto-prompt">
+		<?php if ($produtos->NUM_ROW > 0) { ?>
+		<div class="header">
+				<div class="head codigo">Código</div>
+		</div>
+		<?php foreach ($produtos->FETCH_OBJECT as $produto) { ?>
+		<a class="codigo" href="#"><div><?php echo $produto->Codigo; ?></div></a>
+		<?php } ?>
+		<?php } else { ?>
+		<div class="row-fluid" href="#"></div>
+				<div class="no-data span8" href="#">Não foi encontrado nenhum produto com este Código.</div>
+		</div>
+		<?php } ?>
+</div>

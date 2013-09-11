@@ -1,0 +1,15 @@
+<div id="toolbar" class="produto break">
+		<div class="left">
+				<form id="consultar-produto" class="consultar-produto">
+						<div class="toolbox consultar first input-box">
+								<div class="title">Consultar</div>
+								<input type="text" name="valor" class="tip" title="Insira o Código para consulta" value="<?php echo ($this->session->has('produto_consultado') ? $this->session->get('produto_consultado')->Codigo : '') ?>" />
+						</div>
+						<div class="toolbox-send">
+								<input type="submit" class="tip" title="Consultar" value="" />
+						</div>
+				</form>
+		</div>
+		<div class="right">
+		</div>
+</div>

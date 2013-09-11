@@ -1,0 +1,40 @@
+<?php $cliente = $this->session->get('cliente_consultado'); ?>
+<table id="vert" class="span8">
+		<colgroup>
+				<col width="20%">
+				<col width="80%">
+		</colgroup>
+		<tbody>
+						 <tr><td class="head left">Fantasia</td>				<td><?php echo $cliente->Apelido; ?></td>
+				</tr><tr><td class="head left">Razão Social</td>		<td><?php echo $cliente->Razao; ?></td>
+				</tr><tr><td class="head left">Endereço</td>				<td><?php echo $cliente->Endereco; ?></td>
+				</tr><tr><td class="head left">Bairro</td>					<td><?php echo $cliente->Bairro; ?></td>
+				</tr><tr><td class="head left">Cidade / UF</td>			<td><?php echo $cliente->Cidade; ?> / <?php echo $cliente->Es; ?></td>
+				</tr><tr><td class="head left">CEP</td>							<td><?php echo $cliente->Cep; ?></td>
+				</tr><tr><td class="head left">C.G.C.</td>					<td><?php echo $cliente->CGC; ?></td>
+				</tr><tr><td class="head left">Inscr. Est.</td>			<td><?php echo $cliente->Inscricao; ?></td>
+				</tr><tr><td class="head left">(DDD) Tel / Fax</td>	<td>(<?php echo $cliente->DDD; ?>) <?php echo $this->isNull($cliente->Tel) ?> / <?php echo $this->isNull($cliente->Fax); ?></td>
+				</tr><tr><td class="head left">Representante</td>		<td><?php echo $cliente->Rep; ?></td>
+				</tr><tr><td class="head left">Transporte</td>			<td><?php echo utf8_encode($cliente->Transporte); ?></td>
+						</tr>
+		</tbody>
+</table>
+<!-- Tabela de Cor - Por: (cliente, Firma) -->
+<table id="table-right" class="data span4" style="width:33%;">
+		<colgroup>
+				<col width="50%" />
+				<col width="50%" />
+		</colgroup>
+		<thead>
+				<tr>
+						<td>Cor</td>
+						<td>Quantidade</td>
+				</tr>
+		</thead>
+		<tbody>
+				<tr>
+						<td>oiuae</td>
+						<td>oiuae</td>
+				</tr>
+		</tbody>
+</table>

@@ -1,0 +1,24 @@
+<tr class="tr-presub"><td colspan="10" style="padding:0 30px;">
+		<table class="data full presub table">
+				<thead>
+						<tr>
+								<td>PedidoN</td>
+								<td>Cor</td>
+								<td>Original</td>
+								<td>Preço</td>
+								<td>Quantidade</td>
+								<td>Total</td>
+						</tr>
+				</thead>
+<?php foreach ($presub->FETCH_OBJECT as $k => $p) { ?>
+				<tr<?php echo (($k + 1) == $presub->NUM_ROW ? ' class="last"' : ''); ?>>
+						<td class="left"><?php echo $p->PedidoN; ?></td>
+						<td class="left"><?php echo $p->Cor; ?></td>
+						<td class="right"><?php echo (is_null($p->Original) ? '0.00' : $p->Original); ?></td>
+						<td class="right"><?php echo number_format($p->Preco, 2, ',', '.'); ?></td>
+						<td class="right"><?php echo number_format($p->Qtde, 2, ',', '.'); ?></td>
+						<td class="right"><?php echo number_format($p->Total, 2, ',', '.'); ?></td>
+				</tr>
+<?php } ?>
+		</table>
+</td></tr>

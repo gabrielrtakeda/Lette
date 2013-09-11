@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11.dtd">
+<html>
+<head>
+<?php echo $this->getFavicon(); ?>
+<?php foreach ($this->getJs() as $js) { ?>
+<?php echo $js . "\n"; ?>
+<?php } ?>
+
+<?php foreach ($this->getStyles() as $style) { ?>
+<?php echo $style . "\n"; ?>
+<?php } ?>
+<noscript>
+  This page needs JavaScript activated to work. 
+  <style>div { display:none; }</style>
+</noscript>
+<script type="text/javascript">
+const BASE_URL      = '<?php echo BASE_URL; ?>';
+const MODULE        = '<?php echo strtolower($this->_module['name']) . '/'; ?>';
+const CONTROLLER    = '<?php echo $this->_controller['name'] . '/'; ?>';
+const ACTION        = '<?php echo $this->_action['name'] . '/'; ?>';
+<?php if ($this->session->has('firma')) { ?>
+      SETTED_FIRMA  = '<?php echo $this->session->get('firma')['id']; ?>';
+<?php } ?>
+</script>
+</head>

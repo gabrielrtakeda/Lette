@@ -1,0 +1,32 @@
+<h3>Consultar Clientes</h3>
+<div class="loading"></div>
+<form id="consulta-cliente" method="post" style="margin:0;">
+		<div id="data" class="white">
+				<div class="header">
+						<div class="head width10">Apelido</div>
+				</div>
+		</div>
+		<input type="text" name="consulta_cliente" />
+</form>
+
+<script type="text/javascript">
+jQuery(function() {
+		$('#consulta-cliente').submit(function(e) {
+				e.preventDefault();
+				var apelido = $(this).find('input[name="consulta_cliente"]').val();
+				var self = $(this);
+				$.ajax({
+						url					: BASE_URL + 'cliente/json/consultaCliente',
+						type				: 'post',
+						data				: { apelido:apelido },
+						dataType		: 'html',
+						beforeSend	: function() { loading(); },
+						success			: function(html) {
+								hikari.setContent(html);
+						},
+						complete		: function() { loading(0); },
+						error				: function(x, op, e) { ajaxException(x, op, e); }
+				});
+		});
+});
+</script>

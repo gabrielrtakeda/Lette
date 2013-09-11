@@ -1,0 +1,22 @@
+<?php echo $head; ?>
+<?php echo $header; ?>
+<?php echo $toolbar; ?>
+<?php echo $welcome; ?>
+
+<div class="cliente">
+		<div class="loading"></div>
+
+		<div class="row-fluid cliente-data">
+				<?php if (!($this->session->has('cliente_consultado'))) { ?>
+				<div class="span12 no-data">
+						<!--<img src="<?php echo DIR_IMAGES . 'Empty-Page.png'; ?>">-->
+						<span class="empty-page"></span>
+						Nenhum cliente foi consultado.
+				</div>
+				<?php } else { ?>
+				<?php echo utf8_decode($consulta); ?>
+				<?php } ?>
+		</div>
+</div>
+<?php echo $footer; ?>
+<?php var_dump($this->session->get()); ?>

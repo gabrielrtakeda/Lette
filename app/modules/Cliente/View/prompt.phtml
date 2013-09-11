@@ -1,0 +1,19 @@
+<h3>Consultar Produto</h3>
+<div id="data" class="white consulta-cliente" method="setCliente">
+		<?php if ($clientes->NUM_ROW > 0) { ?>
+		<div class="header">
+				<div class="head width5">Apelido</div>
+				<div class="head width5">Razão</div>
+		</div>
+		<?php foreach ($clientes->FETCH_OBJECT as $cliente) { ?>
+		<a class="left" href="#" apelido="<?php echo $cliente->Apelido; ?>">
+				<div class="width5 left"><?php echo $cliente->Apelido; ?></div>
+				<div class="width5 left"><?php echo utf8_decode($cliente->Razao); ?></div>
+		</a>
+		<?php } ?>
+		<?php } else { ?>
+		<div class="row-fluid" href="#"></div>
+				<div class="no-data span8" href="#">Não foi encontrado nenhum cliente com este Apelido.</div>
+		</div>
+		<?php } ?>
+</div>

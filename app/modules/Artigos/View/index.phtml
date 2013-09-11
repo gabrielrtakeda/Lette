@@ -1,0 +1,63 @@
+<?php echo $head; ?>
+<?php echo $header; ?>
+<?php echo $toolbar; ?>
+<?php echo $welcome; ?>
+
+<div class="artigos" style="overflow-x:auto;">
+		<table class="data full" cellspacing="0" cellpadding="0" style="width:2000px;">
+				<colgroup>
+						<col width="291" />
+						<col width="112" /><col width="108" /><col width=" 91" />
+						<col width="113" /><col width="117" /><col width=" 91" />
+						<col width="113" /><col width=" 98" /><col width=" 91" />
+						<col width="113" /><col width=" 99" /><col width=" 91" />
+						<col width=" 59" /><col width=" 92" /><col width=" 92" />
+						<col width=" 48" /><col width=" 65" /><col width=" 81" />
+						<col width=" 34" />
+				</colgroup>
+				<thead>
+						<tr>
+								<?php $thead 	= array('Artigo', 
+																			'Emb1', 'Ordem1', 'Previsao1',
+																			'Emb2', 'Ordem2', 'Previsao2',
+																			'Emb3', 'Ordem3', 'Previsao3',
+																			'Emb4', 'Ordem4', 'Previsao4',
+																			'Emb5', 'Ordem5', 'Previsao5',
+																			'Emb6', 'Ordem6', 'Previsao6', 'Obs'); ?>
+								<?php foreach ($thead as $head) { ?>
+								<td><?php echo $head; ?></td>
+								<?php } ?>
+						</tr>
+				</thead>
+				<tbody>
+						<tr>
+								<?php foreach ($artigos->FETCH_OBJECT as $k => $artigo) { ?>
+								<td class="left destaque"><?php echo $artigo->Artigo; ?></td>
+								<td class="left"><?php echo $artigo->Emb1; ?></td><td class="left"><?php echo $artigo->Ordem1; ?></td><td class="center"><?php echo ($artigo->Previsao1 != null ? date_format($artigo->Previsao1, 'd/m/Y') : '-'); ?></td>
+								<td class="left"><?php echo $artigo->Emb2; ?></td><td class="left"><?php echo $artigo->Ordem2; ?></td><td class="center"><?php echo ($artigo->Previsao2 != null ? date_format($artigo->Previsao2, 'd/m/Y') : '-'); ?></td>
+								<td class="left"><?php echo $artigo->Emb3; ?></td><td class="left"><?php echo $artigo->Ordem3; ?></td><td class="center"><?php echo ($artigo->Previsao3 != null ? date_format($artigo->Previsao3, 'd/m/Y') : '-'); ?></td>
+								<td class="left"><?php echo $artigo->Emb4; ?></td><td class="left"><?php echo $artigo->Ordem4; ?></td><td class="center"><?php echo ($artigo->Previsao4 != null ? date_format($artigo->Previsao4, 'd/m/Y') : '-'); ?></td>
+								<td class="left"><?php echo $artigo->Emb5; ?></td><td class="left"><?php echo $artigo->Ordem5; ?></td><td class="center"><?php echo ($artigo->Previsao5 != null ? date_format($artigo->Previsao5, 'd/m/Y') : '-'); ?></td>
+								<td class="left"><?php echo $artigo->Emb6; ?></td><td class="left"><?php echo $artigo->Ordem6; ?></td><td class="center"><?php echo ($artigo->Previsao6 != null ? date_format($artigo->Previsao6, 'd/m/Y') : '-'); ?></td>
+								<td class="left last"><?php echo $artigo->Obs; ?></td>
+								<?php if (($k + 1) != $artigos->NUM_ROW) { ?>
+								</tr><tr>
+								<?php } ?>
+								<?php } ?>
+						</tr>
+				</tbody>
+		</table>
+</div>
+
+<div id="booklet">
+		<?php
+		// Sets
+		$this->booklet->setPageNumber($num_row, $limit)
+									->setCurrentPage($page)
+		;
+		?>
+		Page Number: <?php $this->booklet->setPageNumber($num_row, $limit); echo $this->booklet->getPageNumber(); ?>
+		<br>Current Page: <?php echo $this->booklet->getCurrentPage(); ?>
+</div>
+
+<?php echo $footer; ?>

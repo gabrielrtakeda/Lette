@@ -1,0 +1,42 @@
+<div id="toolbar" class="home break">
+		<div class="left">
+				<form id="filter-date" class="date">
+						<div class="toolbox inicial first">
+								<div class="title">Inicial</div>
+								<span><?php echo date('d/m/Y'); ?></span>
+								<a href="#" id="date-inicial"class="date-icon tip" title="Selecione a data inicial para o filtro."></a>
+						</div>
+						<div class="toolbox final">
+								<div class="title">Final</div>
+								<span><?php echo date('d/m/Y'); ?></span>
+								<a href="#" id="date-final" class="date-icon tip" title="Selecione a data final para o filtro."></a>
+						</div>
+						<div class="toolbox-send">
+								<input type="submit" class="tip" title="Filtrar por data" value="" />
+						</div>
+				</form>
+		</div>
+		
+		<div class="right">
+				<div class="toolbox status select-box">
+						<div class="title">Situação</div>
+						<select class="tip" title="Selecione a situação do pedido para o filtro.">
+								<option>Selectione...</option>
+								<?php $situacao = array('A', 'B', 'C', 'D'); ?>
+								<?php foreach ($situacao as $st) { ?>
+								<option value="<?php echo $st ?>"><?php echo $st ?></option>
+								<?php } ?>
+						</select>
+				</div>
+				
+				<form id="filter-pedido">
+						<div class="toolbox pedido input-box">
+								<div class="title">Pedido</div>
+								<input type="text" name="num_pedido" class="tip" title="Digite o número do pedido para busca.">
+						</div>
+						<div class="toolbox-send">
+								<input type="submit" value="" class="tip" title="Buscar por número de pedido." />
+						</div>
+				</form>
+		</div>
+</div>
